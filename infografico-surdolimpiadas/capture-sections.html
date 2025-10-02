@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capturar Seções - Surdolimpíadas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 0;
+            width: 100%;
+        }
+        button:hover {
+            background: #1e40af;
+        }
+        button:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+        }
+        .status {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 4px;
+            display: none;
+        }
+        .success {
+            background: #d1fae5;
+            color: #065f46;
+            border: 1px solid #10b981;
+        }
+        .error {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #ef4444;
+        }
+        .info {
+            background: #dbeafe;
+            color: #1e40af;
+            border: 1px solid #3b82f6;
+        }
+        .progress {
+            width: 100%;
+            height: 20px;
+            background: #e5e7eb;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+        .progress-bar {
+            height: 100%;
+            background: #3b82f6;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        .instructions {
+            background: #fffbeb;
+            border: 1px solid #f59e0b;
+            border-radius: 6px;
+            padding: 1rem;
+            margin-bottom: 2rem;
+        }
+        .instructions h3 {
+            color: #92400e;
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📸 Capturar Seções como PNG</h1>
+        
+        <div class="instructions">
+            <h3>🔧 Instruções de Uso:</h3>
+            <ol>
+                <li><strong>Abra primeiro o arquivo index.html</strong> na mesma pasta em outra aba do navegador</li>
+                <li>Volte para esta página e clique no botão abaixo</li>
+                <li>O script irá automaticamente capturar todas as seções como imagens PNG</li>
+                <li>As imagens serão baixadas automaticamente para sua pasta de Downloads</li>
+            </ol>
+        </div>
+
+        <button id="captureBtn" onclick="startCapture()">
+            🚀 Iniciar Captura das Seções
+        </button>
+
+        <div class="progress" style="display: none;">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <div id="status" class="status"></div>
+
+        <div style="margin-top: 2rem;">
+            <h3>📋 Seções que serão capturadas:</h3>
+            <ol id="sectionsList">
+                <li>Cabeçalho - Surdolimpíadas</li>
+                <li>Linha do Tempo</li>
+                <li>Por que não fazem parte da Paralimpíada</li>
+                <li>Modalidades de Verão</li>
+                <li>Modalidades de Inverno</li>
+                <li>Estrutura Organizacional</li>
+                <li>Elegibilidade e Classificação</li>
+                <li>Dados e Números</li>
+                <li>Adaptações Esportivas</li>
+                <li>Comunicação e Cultura Surda</li>
+                <li>Impacto Social e Desafios</li>
+                <li>Ensino e Aprendizagem</li>
+                <li>Medalhas Brasileiras</li>
+                <li>Referências Bibliográficas</li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        function showStatus(message, type = 'info') {
+            const status = document.getElementById('status');
+            status.className = `status ${type}`;
+            status.textContent = message;
+            status.style.display = 'block';
+        }
+
+        function updateProgress(current, total) {
+            const progressBar = document.getElementById('progressBar');
+            const progress = document.querySelector('.progress');
+            const percentage = (current / total) * 100;
+            
+            progress.style.display = 'block';
+            progressBar.style.width = `${percentage}%`;
+        }
+
+        async function loadHtml2Canvas() {
+            return new Promise((resolve, reject) => {
+                if (window.html2canvas) {
+                    resolve();
+                    return;
+                }
+
+                const script = document.createElement('script');
+                script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';
+                script.onload = () => resolve();
+                script.onerror = () => reject(new Error('Falha ao carregar html2canvas'));
+                document.head.appendChild(script);
+            });
+        }
+
+        async function captureSection(selector, filename, targetWindow) {
+            try {
+                const element = targetWindow.document.querySelector(selector);
+                if (!element) {
+                    throw new Error(`Seção não encontrada: ${selector}`);
+                }
+
+                // Scroll to element to ensure it's visible
+                element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                
+                // Wait for scroll and content to stabilize
+                await new Promise(resolve => setTimeout(resolve, 2000));
+
+                // Force font loading
+                await targetWindow.document.fonts.ready;
+                console.log('Fonts loaded for', filename);
+
+                // Primary capture method with optimized settings
+                const canvas = await targetWindow.html2canvas(element, {
+                    useCORS: true,
+                    allowTaint: false,
+                    scale: 2, // Higher scale for better quality, but with proper text handling
+                    backgroundColor: '#ffffff',
+                    logging: false,
+                    width: element.offsetWidth,
+                    height: element.offsetHeight,
+                    windowWidth: 1280, // Fixed viewport width
+                    windowHeight: 720,
+                    removeContainer: false,
+                    imageTimeout: 10000,
+                    onclone: function(clonedDoc) {
+                        // Force consistent font rendering
+                        const style = clonedDoc.createElement('style');
+                        style.textContent = `
+                            * {
+                                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif !important;
+                                -webkit-font-smoothing: antialiased !important;
+                                -moz-osx-font-smoothing: grayscale !important;
+                                text-rendering: optimizeLegibility !important;
+                                font-variant-ligatures: none !important;
+                                -webkit-transform: translateZ(0) !important;
+                                transform: translateZ(0) !important;
+                            }
+                            
+                            .timeline-content, .section-title, .section-subtitle, p, h1, h2, h3, h4, span, div {
+                                line-height: 1.5 !important;
+                                letter-spacing: 0.025em !important;
+                                word-spacing: normal !important;
+                            }
+                        `;
+                        clonedDoc.head.appendChild(style);
+                        
+                        // Remove any potential transforms that might affect text
+                        const allElements = clonedDoc.querySelectorAll('*');
+                        allElements.forEach(el => {
+                            const computedStyle = targetWindow.getComputedStyle(el);
+                            if (computedStyle.transform !== 'none') {
+                                el.style.transform = 'none';
+                            }
+                        });
+                    }
+                });
+
+                // Create download link
+                const link = document.createElement('a');
+                link.download = filename;
+                link.href = canvas.toDataURL('image/png', 1.0);
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+
+                return true;
+            } catch (error) {
+                console.error(`Erro ao capturar ${filename}:`, error);
+                
+                // Try fallback with different approach
+                try {
+                    await new Promise(resolve => setTimeout(resolve, 1000));
+                    
+                    // Fallback method with simpler options
+                    const canvas = await targetWindow.html2canvas(element, {
+                        useCORS: true,
+                        allowTaint: true,
+                        scale: 1,
+                        backgroundColor: '#ffffff',
+                        logging: false,
+                        width: element.offsetWidth,
+                        height: element.offsetHeight,
+                        foreignObjectRendering: false,
+                        removeContainer: false,
+                        onclone: function(clonedDoc) {
+                            // Simplified font fix for fallback
+                            const style = clonedDoc.createElement('style');
+                            style.textContent = `* { font-family: Arial, sans-serif !important; }`;
+                            clonedDoc.head.appendChild(style);
+                        }
+                    });
+
+                    const link = document.createElement('a');
+                    link.download = `fallback_${filename}`;
+                    link.href = canvas.toDataURL('image/png', 0.9);
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+
+                    return true;
+                } catch (fallbackError) {
+                    console.error(`Fallback também falhou para ${filename}:`, fallbackError);
+                    return false;
+                }
+            }
+        }
+
+        async function startCapture() {
+            const button = document.getElementById('captureBtn');
+            button.disabled = true;
+            button.textContent = '⏳ Processando...';
+
+            try {
+                // Check if index.html is open in another tab
+                let targetWindow = null;
+                
+                // Try to find the index.html window
+                const indexUrl = window.location.href.replace('capture-sections.html', 'index.html');
+                
+                // Open index.html in a new window if not found
+                showStatus('🔍 Procurando ou abrindo index.html...', 'info');
+                targetWindow = window.open(indexUrl, 'surdolimpiadas', 'width=1280,height=720');
+                
+                if (!targetWindow) {
+                    throw new Error('Não foi possível abrir index.html. Verifique se o popup foi bloqueado.');
+                }
+
+                // Wait for the page to load
+                await new Promise((resolve) => {
+                    const checkLoaded = () => {
+                        if (targetWindow.document.readyState === 'complete') {
+                            resolve();
+                        } else {
+                            setTimeout(checkLoaded, 100);
+                        }
+                    };
+                    checkLoaded();
+                });
+
+                // Load html2canvas in the target window
+                showStatus('📚 Carregando biblioteca html2canvas...', 'info');
+                await new Promise((resolve, reject) => {
+                    const script = targetWindow.document.createElement('script');
+                    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';
+                    script.onload = () => resolve();
+                    script.onerror = () => reject(new Error('Falha ao carregar html2canvas'));
+                    targetWindow.document.head.appendChild(script);
+                });
+
+                // Wait a bit more for library to be ready
+                await new Promise(resolve => setTimeout(resolve, 1000));
+
+                showStatus('📸 Iniciando captura das seções...', 'info');
+
+                // Define sections to capture with better selectors
+                const sections = [
+                    { selector: 'section.header-section', filename: '01-cabecalho.png', name: 'Cabeçalho' },
+                    { selector: 'section.section:nth-of-type(2)', filename: '02-linha-do-tempo.png', name: 'Linha do Tempo' },
+                    { selector: 'section.section:nth-of-type(3)', filename: '03-paralimpiada.png', name: 'Por que não fazem parte da Paralimpíada' },
+                    { selector: 'section.section:nth-of-type(4)', filename: '04-modalidades-verao.png', name: 'Modalidades de Verão' },
+                    { selector: 'section.section:nth-of-type(5)', filename: '05-modalidades-inverno.png', name: 'Modalidades de Inverno' },
+                    { selector: 'section.section:nth-of-type(6)', filename: '06-estrutura.png', name: 'Estrutura Organizacional' },
+                    { selector: 'section.section:nth-of-type(7)', filename: '07-elegibilidade.png', name: 'Elegibilidade e Classificação' },
+                    { selector: 'section.section:nth-of-type(8)', filename: '08-dados.png', name: 'Dados e Números' },
+                    { selector: 'section.section:nth-of-type(9)', filename: '09-adaptacoes.png', name: 'Adaptações Esportivas' },
+                    { selector: 'section.section:nth-of-type(10)', filename: '10-comunicacao.png', name: 'Comunicação e Cultura Surda' },
+                    { selector: 'section.section:nth-of-type(11)', filename: '11-impacto.png', name: 'Impacto Social e Desafios' },
+                    { selector: 'section.section:nth-of-type(12)', filename: '12-ensino.png', name: 'Ensino e Aprendizagem' },
+                    { selector: 'section.section:nth-of-type(13)', filename: '13-medalhas.png', name: 'Medalhas Brasileiras' },
+                    { selector: 'section.references, .references', filename: '14-referencias.png', name: 'Referências Bibliográficas' }
+                ];
+
+                let successful = 0;
+                let failed = 0;
+
+                // Capture each section
+                for (let i = 0; i < sections.length; i++) {
+                    const section = sections[i];
+                    updateProgress(i, sections.length);
+                    showStatus(`📸 Capturando: ${section.name} (${i + 1}/${sections.length})`, 'info');
+
+                    const success = await captureSection(section.selector, section.filename, targetWindow);
+                    if (success) {
+                        successful++;
+                    } else {
+                        failed++;
+                    }
+
+                    // Wait between captures
+                    await new Promise(resolve => setTimeout(resolve, 1000));
+                }
+
+                updateProgress(sections.length, sections.length);
+
+                // Close the target window
+                if (targetWindow && !targetWindow.closed) {
+                    targetWindow.close();
+                }
+
+                // Show final status
+                if (failed === 0) {
+                    showStatus(`✅ Sucesso! Todas as ${successful} seções foram capturadas e baixadas.`, 'success');
+                } else {
+                    showStatus(`⚠️ Concluído com problemas: ${successful} sucessos, ${failed} falhas.`, 'error');
+                }
+
+            } catch (error) {
+                showStatus(`❌ Erro: ${error.message}`, 'error');
+                console.error('Erro durante a captura:', error);
+            } finally {
+                button.disabled = false;
+                button.textContent = '🚀 Iniciar Captura das Seções';
+            }
+        }
+    </script>
+</body>
+</html>
