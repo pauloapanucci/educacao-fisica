@@ -1,0 +1,1625 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surdolimpíadas - Infográfico Completo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background: #f9fafb;
+            line-height: 1.6;
+        }
+
+        /* Seção Base */
+        .section {
+            min-height: 100vh;
+            padding: 4rem 2rem;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        /* Divisores */
+        .divider {
+            height: 4px;
+            background: linear-gradient(to right, #f97316, #fbbf24, #10b981);
+        }
+
+        /* Cabeçalho */
+        .header-section {
+            background: linear-gradient(to bottom right, #2563eb, #1e3a8a);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .header-top-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: linear-gradient(to right, #fbbf24, #ef4444, #2563eb);
+        }
+
+        .header-icon {
+            display: inline-block;
+            background: white;
+            color: #1e40af;
+            padding: 2rem 3rem;
+            border-radius: 9999px;
+            font-size: 4rem;
+            font-weight: 900;
+            box-shadow: 0 20px 25px rgba(0,0,0,0.3);
+            margin-bottom: 2rem;
+        }
+
+        .header-title {
+            font-size: 5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+        }
+
+        .header-subtitle {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 3rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-card {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px rgba(0,0,0,0.2);
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 900;
+        }
+
+        .stat-label {
+            font-size: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .stat-sublabel {
+            font-size: 1rem;
+            color: #bfdbfe;
+        }
+
+        /* Títulos de Seção */
+        .section-title {
+            font-size: 4rem;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.5rem;
+            text-align: center;
+            color: #4b5563;
+            margin-bottom: 4rem;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #2563eb, #7c3aed);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 4rem;
+            align-items: center;
+        }
+
+        .timeline-item.left {
+            flex-direction: row;
+        }
+
+        .timeline-item.right {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            width: 41.666%;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-left: 8px solid #2563eb;
+            transition: transform 0.3s;
+        }
+
+        .timeline-content:hover {
+            transform: scale(1.05);
+        }
+
+        .timeline-item.left .timeline-content {
+            margin-right: 3rem;
+            text-align: right;
+        }
+
+        .timeline-item.right .timeline-content {
+            margin-left: 3rem;
+            text-align: left;
+        }
+
+        .timeline-year {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #1e40af;
+        }
+
+        .timeline-event {
+            font-size: 1.25rem;
+            color: #1f2937;
+            margin-top: 0.75rem;
+        }
+
+        .timeline-dot {
+            width: 2rem;
+            height: 2rem;
+            background: #2563eb;
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            flex-shrink: 0;
+            z-index: 10;
+        }
+
+        /* Cards Grid */
+        .cards-grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .cards-grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .sports-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .sport-card {
+            background: white;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .sport-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        .sport-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .sport-name {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #1f2937;
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.875rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-list {
+            list-style: none;
+        }
+
+        .card-list li {
+            display: flex;
+            align-items: start;
+            margin-bottom: 1rem;
+            font-size: 1.125rem;
+        }
+
+        .bullet {
+            margin-right: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        /* Alert Box */
+        .alert-box {
+            background: linear-gradient(to right, #fef3c7, #fde68a);
+            border-left: 8px solid #f59e0b;
+            padding: 2rem;
+            border-radius: 1rem;
+            margin: 3rem 0;
+        }
+
+        .alert-text {
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-align: center;
+            color: #1f2937;
+        }
+
+        /* Medalhas */
+        .medal-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-left: 8px solid;
+            margin-bottom: 2rem;
+        }
+
+        .medal-card.gold { border-color: #fbbf24; }
+        .medal-card.silver { border-color: #9ca3af; }
+        .medal-card.bronze { border-color: #ea580c; }
+        .medal-card.blue { border-color: #2563eb; }
+        .medal-card.green { border-color: #16a34a; }
+        .medal-card.cyan { border-color: #0891b2; }
+
+        .medal-header {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .medal-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .medal-item {
+            background: #f9fafb;
+            padding: 1rem;
+            border-radius: 0.5rem;
+        }
+
+        .medal-athlete {
+            font-weight: bold;
+            color: #1f2937;
+        }
+
+        .medal-sport {
+            color: #4b5563;
+        }
+
+        .medal-note {
+            font-size: 0.875rem;
+            color: #7c3aed;
+            font-style: italic;
+            margin-top: 0.5rem;
+        }
+
+        /* Gradient Cards */
+        .gradient-card {
+            background: linear-gradient(to bottom right, var(--start), var(--end));
+            color: white;
+            padding: 2.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px rgba(0,0,0,0.2);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .gradient-card:hover {
+            transform: scale(1.05);
+        }
+
+        /* Org Cards */
+        .org-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-left: 8px solid;
+            display: flex;
+            align-items: start;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .org-icon {
+            font-size: 3rem;
+            padding: 1rem;
+            border-radius: 50%;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .org-content h3 {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .org-content p {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #4b5563;
+            margin-bottom: 1rem;
+        }
+
+        .org-content ul {
+            list-style: none;
+        }
+
+        .org-content ul li {
+            color: #6b7280;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Quote Box */
+        .quote-box {
+            border-left: 6px solid;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .quote-text {
+            font-size: 1.125rem;
+            font-style: italic;
+            color: #1f2937;
+            margin-bottom: 0.75rem;
+        }
+
+        .quote-author {
+            font-size: 0.875rem;
+            color: #6b7280;
+            text-align: right;
+        }
+
+        /* Referências */
+        .references {
+            background: linear-gradient(to bottom right, #1f2937, #111827);
+            color: white;
+            padding: 4rem 2rem;
+        }
+
+        .reference-item {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer CTA */
+        .footer-cta {
+            display: inline-block;
+            background: linear-gradient(to right, #2563eb, #7c3aed);
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+        }
+
+        .footer-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+        }
+
+        /* Fonte */
+        .source-text {
+            font-size: 0.875rem;
+            color: #6b7280;
+            text-align: center;
+            margin-top: 3rem;
+            line-height: 1.6;
+        }
+
+        /* Teaching Points */
+        .teaching-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .teaching-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+        }
+
+        .teaching-icon {
+            font-size: 2.5rem;
+            flex-shrink: 0;
+        }
+
+        .teaching-content h4 {
+            font-weight: bold;
+            color: #1f2937;
+            font-size: 1.125rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .teaching-content p {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        @media (max-width: 768px) {
+            .header-title { font-size: 3rem; }
+            .section-title { font-size: 2.5rem; }
+            .stats-grid, .cards-grid-2, .cards-grid-3, .cards-grid-4, .sports-grid, .teaching-grid {
+                grid-template-columns: 1fr;
+            }
+            .timeline-item { flex-direction: column !important; }
+            .timeline-content { width: 100% !important; margin: 0 0 1rem 0 !important; text-align: center !important; }
+            .timeline-line { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SEÇÃO 1: CABEÇALHO -->
+    <!-- SEÇÃO 1: CABEÇALHO -->
+    <section class="section header-section">
+        <div class="header-top-bar"></div>
+        <div class="container">
+            <div class="header-icon">🏅 DEAFLYMPICS</div>
+            <h1 class="header-title">SURDOLIMPÍADAS</h1>
+            <p class="header-subtitle">O Evento Esportivo Mais Antigo Depois das Olimpíadas</p>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">1924</div>
+                    <div class="stat-label">Primeira Edição</div>
+                    <div class="stat-sublabel">Paris, França</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">177</div>
+                    <div class="stat-label">Países Filiados</div>
+                    <div class="stat-sublabel">ao ICSD</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">36</div>
+                    <div class="stat-label">Modalidades</div>
+                    <div class="stat-sublabel">Verão, Inverno e Decisão</div>
+                </div>
+            </div>
+
+            <div style="margin-top: 4rem; padding-top: 2rem; border-top: 2px solid rgba(255,255,255,0.2);">
+                <p style="text-align: center; font-size: 1.125rem; color: #bfdbfe; margin-bottom: 0.5rem;">
+                    <strong>Elaborado por:</strong> Paulo Alexandre Piornedo Panucci
+                </p>
+                <p style="text-align: center; font-size: 1rem; color: #93c5fd;">
+                    RA: 09057805 | Educação Física Semipresencial | UNIPAR Cianorte
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- SEÇÃO 2: HISTÓRIA -->
+    <section class="section" style="background: linear-gradient(to bottom right, #fff7ed, #dbeafe);">
+        <div class="container">
+            <h2 class="section-title" style="color: #1e40af;">LINHA DO TEMPO</h2>
+            <p class="section-subtitle">História do Movimento Surdolímpico</p>
+            
+            <div class="timeline">
+                <div class="timeline-line"></div>
+                
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="timeline-year">1760</div>
+                        <div class="timeline-event">1ª Escola para Surdos - Charles-Michel de l'Épée</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                    <div style="width: 41.666%;"></div>
+                </div>
+
+                <div class="timeline-item right">
+                    <div style="width: 41.666%;"></div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">1857</div>
+                        <div class="timeline-event">Fundação do Instituto dos Surdos-Mudos do RJ</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="timeline-year">1924</div>
+                        <div class="timeline-event">Comitê Internacional de Esportes para Surdos - 1ºˢ Jogos do Silêncio</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                    <div style="width: 41.666%;"></div>
+                </div>
+
+                <div class="timeline-item right">
+                    <div style="width: 41.666%;"></div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">1965</div>
+                        <div class="timeline-event">Brasil filia-se ao ICSD</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="timeline-year">1984</div>
+                        <div class="timeline-event">Fundação da CBDS</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                    <div style="width: 41.666%;"></div>
+                </div>
+
+                <div class="timeline-item right">
+                    <div style="width: 41.666%;"></div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">1993</div>
+                        <div class="timeline-event">Primeira Participação Brasileira</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2009</div>
+                        <div class="timeline-event">1ª Medalha Brasileira - Alexandre Fernandes</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                    <div style="width: 41.666%;"></div>
+                </div>
+
+                <div class="timeline-item right">
+                    <div style="width: 41.666%;"></div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">2017</div>
+                        <div class="timeline-event">1ª Medalha de Ouro - Guilherme Maia</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2022</div>
+                        <div class="timeline-event">Deaflympics Brasil - Caxias do Sul</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                    <div style="width: 41.666%;"></div>
+                </div>
+            </div>
+            
+            <p class="source-text">
+                <strong>Fonte:</strong> SANTANA JR, A. M. et al. <em>Conhecendo o movimento Surdolímpico</em>. Santos: Paradesporto Brasil + Acessível, 2023.
+            </p>
+        </div>
+    </section>
+
+    <div class="divider" style="background: linear-gradient(to right, #7c3aed, #ec4899, #ef4444);"></div>
+
+    <!-- SEÇÃO 3: POR QUE NÃO FAZ PARTE DA PARALIMPÍADA -->
+    <section class="section" style="background: linear-gradient(to bottom right, #faf5ff, #fce7f3);">
+        <div class="container">
+            <h2 class="section-title" style="color: #7c3aed;">POR QUE OS SURDOS NÃO PARTICIPAM</h2>
+            <h3 class="section-subtitle" style="font-size: 2.5rem; font-weight: bold; color: #6b21a8;">DA PARALIMPÍADA?</h3>
+            
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <div style="display: inline-block; background: #fef3c7; border: 4px solid #f59e0b; padding: 1.5rem 2rem; border-radius: 1rem;">
+                    <p style="font-size: 2rem; font-weight: 900;">SURDOLIMPÍADAS ≠ PARALIMPÍADAS</p>
+                </div>
+            </div>
+
+            <div class="cards-grid-2">
+                <div class="card" style="border-top: 8px solid #7c3aed;">
+                    <div class="card-icon">📜</div>
+                    <h4 class="card-title" style="color: #7c3aed;">MOTIVOS HISTÓRICOS</h4>
+                    <ul class="card-list">
+                        <li><span class="bullet" style="color: #7c3aed;">•</span> Surdolimpíadas iniciaram em <strong>1924</strong></li>
+                        <li><span class="bullet" style="color: #7c3aed;">•</span> Paralimpíadas começaram em <strong>1960</strong></li>
+                        <li><span class="bullet" style="color: #7c3aed;">•</span> ICSD reconhecido pelo COI desde <strong>1955</strong></li>
+                    </ul>
+                </div>
+
+                <div class="card" style="border-top: 8px solid #2563eb;">
+                    <div class="card-icon">⚙️</div>
+                    <h4 class="card-title" style="color: #1e40af;">MOTIVOS TÉCNICOS</h4>
+                    <ul class="card-list">
+                        <li><span class="bullet" style="color: #2563eb;">•</span> Paralimpíada reúne <strong>~4.000</strong> atletas</li>
+                        <li><span class="bullet" style="color: #2563eb;">•</span> Surdolimpíadas atraem <strong>~2.500</strong> atletas</li>
+                        <li><span class="bullet" style="color: #2563eb;">•</span> Seria inviável absorver todos sem cortes</li>
+                    </ul>
+                </div>
+
+                <div class="card" style="border-top: 8px solid #16a34a;">
+                    <div class="card-icon">🗣️</div>
+                    <h4 class="card-title" style="color: #15803d;">MOTIVOS CULTURAIS</h4>
+                    <ul class="card-list">
+                        <li><span class="bullet" style="color: #16a34a;">•</span> Surdos formam <strong>minoria linguística</strong></li>
+                        <li><span class="bullet" style="color: #16a34a;">•</span> Comunicação via <strong>língua de sinais</strong></li>
+                        <li><span class="bullet" style="color: #16a34a;">•</span> Muitos não se consideram "deficientes"</li>
+                    </ul>
+                </div>
+
+                <div class="card" style="border-top: 8px solid #ea580c;">
+                    <div class="card-icon">🤝</div>
+                    <h4 class="card-title" style="color: #c2410c;">COMUNICAÇÃO</h4>
+                    <ul class="card-list">
+                        <li><span class="bullet" style="color: #ea580c;">•</span> Necessidade de <strong>muitos intérpretes</strong> de Libras</li>
+                        <li><span class="bullet" style="color: #ea580c;">•</span> Nas Surdolimpíadas: interação <strong>direta e livre</strong></li>
+                        <li><span class="bullet" style="color: #ea580c;">•</span> "Sentimento de equipe é mais forte"</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="alert-box">
+                <p class="alert-text">
+                    💡 <strong>Decisão Conjunta (1993):</strong> ICSD, IPC e IOC decidiram manter eventos separados como melhor forma para o desenvolvimento das atividades específicas de cada grupo.
+                </p>
+            </div>
+            
+            <p class="source-text">
+                <strong>Fontes:</strong> CBDS. <em>Paralimpíadas e Surdolimpíadas</em>. 2025. | Agência Brasil, 2016.
+            </p>
+        </div>
+    </section>
+
+    <div class="divider" style="background: linear-gradient(to right, #10b981, #3b82f6, #7c3aed);"></div>
+
+    <!-- SEÇÃO 4: MODALIDADES DE VERÃO -->
+    <section class="section" style="background: linear-gradient(to bottom right, #fffbeb, #fed7aa);">
+        <div class="container">
+            <h2 class="section-title" style="color: #ea580c;">MODALIDADES DE VERÃO</h2>
+            <p class="section-subtitle">25 Esportes Oficiais</p>
+            
+            <div class="sports-grid">
+                <div class="sport-card">
+                    <div class="sport-icon">🏃</div>
+                    <div class="sport-name">Atletismo</div>
+                </div>
+                <div class="sport-card">
+                    <div class="sport-icon">🏸</div>
+                    <div class="sport-name">Badminton</div>
+                </div>
+                <div class="sport-card">
+                    <div class="sport-icon">🏀</div>
+                    <div class="sport-name">Basquete</div>
+                </div>
+                <div class="sport-card">
+                    <div class="sport-icon">🏐</div>
+                    <div class="sport-name">Vôlei de Praia</div>
+                </div>
+                <div class="sport-card">
+                    <div class="sport-icon">🎳</div>
+                    <div class="sport-name">Boliche</div>
+                </div>
+                <div class="sport-card">
+                    <div class="sport-icon">🚴</div>
+                    <div class="sport-name">Ciclismo de Estrada</div>
+                </div>
+                <div class="sport-card">
+                    <div class="sport-icon">⚽</div>
+                    <div class="sport-name">Futebol</div>
+                </div>
+                <div class="sport-card">
+                    <div class="sport-icon">⚽</div>
+                    <div class="sport-name">Futsal</div>
+                </div>
+                <div class="sport-card">
+                    <div class="sport-icon">⛳</div>
+                    <div class="sport-name">Golfe</div>
+                </div>
+                <div class="sport-card">
+                    <div class="sport-icon">🤾</div>
+                    <div class="sport-name">Handebol</div>
+                </div>
+                <div class="sport-card">
+                    <div class="sport-icon">🥋</div>
+                    <div class="sport-name">Judô</div>
+                </div>
+                <div class="sport-card">
+                    <div class="sport-icon">🥋</div>
+                    <div class="sport-name">Karatê</div>
+                </div>
+                <div class="sport-card">
+                    <div class="sport-icon">🚵</div>
+                    <div class="sport-name">Mountain Bike</div>
+                </div>
+                <div class="sport-card">
+                    <div class="sport-icon">🧭</div>
+                    <div class="sport-name">Orientação</div>
+                </div>
+                <div class="sport-card">
+                    <div class="sport-icon">🎯</div>
+                    <div class="sport-name">Tiro Esportivo</div>
+                </div>
+                <div class="sport-card">
+                    <div class="sport-icon">🏊</div>
+                    <div class="sport-name">Natação</div>
+                </div>
+                
+                <div class="sport-card">
+                    <div class="sport-icon">🏓</div>
+                    <div class="sport-name">Tênis de Mesa</div>
+                </div>
+                <div class="sport-card">
+                    <div class="sport-icon">🥋</div>
+                    <div class="sport-name">Taekwondo</div>
+                </div>
+                <div class="sport-card">
+                    <div class="sport-icon">🎾</div>
+                    <div class="sport-name">Tênis</div>
+                </div>
+                <div class="sport-card">
+                    <div class="sport-icon">🏐</div>
+                    <div class="sport-name">Vôlei</div>
+                </div>
+                <div class="sport-card">
+                    <div class="sport-icon">🤼</div>
+                    <div class="sport-name">Luta Livre</div>
+                </div>
+                <div class="sport-card">
+                    <div class="sport-icon">🤼</div>
+                    <div class="sport-name">Luta Livre</div>
+                </div>
+                
+                <div class="sport-card">
+                    <div class="sport-icon">🤸</div>
+                    <div class="sport-name">Ginástica Artistica (Última aparição em Belgrado 1969)</div>
+                </div>
+                <div class="sport-card">
+                    <div class="sport-icon">🤿</div>
+                    <div class="sport-name">Saltos Ornamentais (Última aparição em Taipei 2009)</div>
+                </div>
+                <div class="sport-card">
+                    <div class="sport-icon">🤽</div>
+                    <div class="sport-name">Polo Aquático (Última aparição em Taipei 2009)</div>
+                </div>
+            </div>
+
+            <div style="background: linear-gradient(to right, #f97316, #ea580c); color: white; padding: 2rem; border-radius: 1rem; text-align: center; box-shadow: 0 10px 15px rgba(0,0,0,0.2);">
+                <p style="font-size: 1.875rem; font-weight: bold;">25 Modalidades de Verão + 6 de Inverno = 31 Modalidades Totais</p>
+            </div>
+            
+            <p class="source-text">
+                <strong>Fonte:</strong> SANTANA JR, A. M. et al. <em>Conhecendo o movimento Surdolímpico</em>. Santos: Paradesporto Brasil + Acessível, 2023; https://www.deaflympics.com
+            </p>
+        </div>
+    </section>
+
+    <div class="divider" style="background: linear-gradient(to right, #06b6d4, #3b82f6, #6366f1);"></div>
+
+    <!-- SEÇÃO 5: MODALIDADES DE INVERNO -->
+    <section class="section" style="background: linear-gradient(to bottom right, #ecfeff, #dbeafe);">
+        <div class="container">
+            <h2 class="section-title" style="color: #0891b2;">MODALIDADES DE INVERNO</h2>
+            
+            <div class="cards-grid-2">
+                <!-- Inverno -->
+                <div class="card" style="border-top: 8px solid #0891b2;">
+                    <h4 class="card-title" style="color: #0891b2;">❄️ INVERNO (6)</h4>
+                    <ul class="card-list">
+                        <li><span class="bullet" style="color: #0891b2;">⛷️</span> Esqui Alpino</li>
+                        <li><span class="bullet" style="color: #7c3aed;">♟️</span> Xadrez</li>
+                        <li><span class="bullet" style="color: #0891b2;">⛷️</span> Esqui Cross Country</li>
+                        <li><span class="bullet" style="color: #0891b2;">🥌</span> Curling</li>
+                        <li><span class="bullet" style="color: #0891b2;">🏒</span> Hóquei</li>
+                        <li><span class="bullet" style="color: #0891b2;">🏂</span> Snowboard</li>
+                    </ul>
+                </div>
+
+                <!-- Resumo -->
+                <div class="gradient-card" style="--start: #f97316; --end: #dc2626;">
+                    <h3 style="font-size: 2.5rem; font-weight: 900; margin-bottom: 2rem;">TOTAL</h3>
+                    <div style="background: rgba(255,255,255,0.2); backdrop-filter: blur(10px); padding: 1.5rem; border-radius: 0.75rem; margin-bottom: 1rem;">
+                        <p style="font-size: 4rem; font-weight: 900;">31</p>
+                        <p style="font-size: 1.25rem;">MODALIDADES</p>
+                    </div>
+                    <div style="font-size: 1.125rem; font-weight: 600; line-height: 2;">
+                        <p>25 Verão</p>
+                        <p>6 Inverno</p>
+                    </div>
+                </div>
+            </div>
+            
+            <p class="source-text">
+                <strong>Fonte:</strong> SANTANA JR, A. M. et al. <em>Conhecendo o movimento Surdolímpico</em>. Santos: Paradesporto Brasil + Acessível, 2023
+            </p>
+        </div>
+    </section>
+
+    <div class="divider" style="background: linear-gradient(to right, #16a34a, #059669, #0891b2);"></div>
+
+    <!-- SEÇÃO 6: ESTRUTURA ORGANIZACIONAL -->
+    <section class="section" style="background: linear-gradient(to bottom right, #f0fdf4, #d1fae5);">
+        <div class="container">
+            <h2 class="section-title" style="color: #15803d;">ESTRUTURA ORGANIZACIONAL</h2>
+            <p class="section-subtitle">Entidades que Governam o Movimento Surdolímpico</p>
+            
+            <!-- ICSD -->
+            <div class="org-card" style="border-color: #2563eb;">
+                <div class="org-icon" style="background: #2563eb;">🌍</div>
+                <div class="org-content">
+                    <h3 style="color: #1e40af;">ICSD</h3>
+                    <p>Comitê Internacional de Esportes para Surdos</p>
+                    <ul>
+                        <li>• Fundado em <strong>1924</strong></li>
+                        <li>• Reconhecido pelo COI desde <strong>1955</strong></li>
+                        <li>• <strong>177 países</strong> filiados</li>
+                        <li>• Organiza as <strong>Deaflympics</strong> (Verão e Inverno)</li>
+                        <li>• 24 edições de verão e 18 edições de inverno</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- PANAMDES -->
+            <div class="org-card" style="border-color: #dc2626;">
+                <div class="org-icon" style="background: #dc2626;">🌎</div>
+                <div class="org-content">
+                    <h3 style="color: #b91c1c;">PANAMDES</h3>
+                    <p>Organização Pan-americana de Esportes para Surdos</p>
+                    <ul>
+                        <li>• Fundada em <strong>1971</strong></li>
+                        <li>• Principal evento: <strong>Jogos Pan-americanos para Surdos</strong></li>
+                        <li>• Representa as Américas no movimento surdolímpico</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- CBDS -->
+            <div class="org-card" style="border-color: #16a34a;">
+                <div class="org-icon" style="background: #16a34a;">🇧🇷</div>
+                <div class="org-content">
+                    <h3 style="color: #15803d;">CBDS</h3>
+                    <p>Confederação Brasileira de Desportos para Surdos</p>
+                    <ul>
+                        <li>• Fundada em <strong>1984</strong></li>
+                        <li>• Federações em <strong>19 estados</strong> brasileiros</li>
+                        <li>• <strong>8 participações</strong> em Deaflympics de Verão</li>
+                        <li>• <strong>1 participação</strong> em Deaflympics de Inverno</li>
+                        <li>• Primeira participação internacional: <strong>1993</strong></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <p class="source-text">
+                <strong>Fontes:</strong> SANTANA JR, A. M. et al. <em>Conhecendo o movimento Surdolímpico</em>. Santos: Paradesporto Brasil + Acessível, 2023; https://cbds.org.br; https://www.deaflympics.com/icsd
+            </p>
+        </div>
+    </section>
+
+    <div class="divider" style="background: linear-gradient(to right, #6366f1, #8b5cf6, #a855f7);"></div>
+
+    <!-- SEÇÃO 7: ELEGIBILIDADE E CLASSIFICAÇÃO -->
+    <section class="section" style="background: linear-gradient(to bottom right, #eef2ff, #e9d5ff);">
+        <div class="container">
+            <h2 class="section-title" style="color: #4f46e5;">ELEGIBILIDADE E CLASSIFICAÇÃO</h2>
+            <p class="section-subtitle">Critérios para Participação nas Surdolimpíadas</p>
+            
+            <div class="cards-grid-2">
+                <!-- Critério Audiológico -->
+                <div class="card" style="border-top: 8px solid #6366f1;">
+                    <div class="card-icon">👂</div>
+                    <h4 class="card-title" style="color: #4f46e5;">CRITÉRIO AUDIOLÓGICO</h4>
+                    <div style="background: #e0e7ff; padding: 2rem; border-radius: 0.75rem; margin-bottom: 1.5rem;">
+                        <p style="font-size: 3.5rem; font-weight: 900; color: #4f46e5; text-align: center;">≥ 55 dB</p>
+                        <p style="font-size: 1.125rem; text-align: center; color: #4b5563; margin-top: 0.5rem;">Perda auditiva no melhor ouvido</p>
+                    </div>
+                    <p style="text-align: center; color: #6b7280;">Segundo decreto brasileiro 3.298/1999: perda auditiva ≥ 41 dB é considerada surdez</p>
+                </div>
+
+                <!-- Avaliação -->
+                <div class="card" style="border-top: 8px solid #8b5cf6;">
+                    <div class="card-icon">📊</div>
+                    <h4 class="card-title" style="color: #7c3aed;">AVALIAÇÃO</h4>
+                    <div style="background: #f3e8ff; padding: 1.5rem; border-radius: 0.75rem; margin-bottom: 1rem;">
+                        <p style="font-weight: bold; color: #7c3aed; margin-bottom: 0.5rem;">Exame: AUDIOMETRIA</p>
+                        <p style="font-size: 0.875rem; color: #6b7280;">Teste que avalia a capacidade auditiva em diferentes frequências e intensidades sonoras</p>
+                    </div>
+                    <div style="background: #f3e8ff; padding: 1.5rem; border-radius: 0.75rem;">
+                        <p style="font-weight: bold; color: #7c3aed; margin-bottom: 0.5rem;">Classificação Biomédica</p>
+                        <p style="font-size: 0.875rem; color: #6b7280;">Baseada exclusivamente na perda auditiva medida</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Classe Única -->
+            <div class="gradient-card" style="--start: #f97316; --end: #dc2626; margin-top: 2rem;">
+                <div style="font-size: 4rem; margin-bottom: 1rem;">🏅</div>
+                <h3 style="font-size: 2.5rem; font-weight: 900; margin-bottom: 1rem;">CLASSE ÚNICA DE COMPETIÇÃO</h3>
+                <p style="font-size: 1.5rem;">Diferente das Paralimpíadas, nas Surdolimpíadas todos os atletas surdos competem juntos, sem divisão por grau de surdez</p>
+            </div>
+            
+            <p class="source-text">
+                <strong>Fontes:</strong> SANTANA JR, A. M. et al. <em>Conhecendo o movimento Surdolímpico</em>. Santos: Paradesporto Brasil + Acessível, 2023; Brasil, Decreto 3.298/1999
+            </p>
+        </div>
+    </section>
+
+    <div class="divider" style="background: linear-gradient(to right, #ec4899, #f43f5e, #ef4444);"></div>
+
+    <!-- SEÇÃO 8: DADOS ESTATÍSTICOS -->
+    <section class="section" style="background: linear-gradient(to bottom right, #fef2f2, #fee2e2);">
+        <div class="container">
+            <h2 class="section-title" style="color: #dc2626;">DADOS E NÚMEROS</h2>
+            <p class="section-subtitle">Estatísticas do Movimento Surdolímpico</p>
+            
+            <div class="cards-grid-3">
+                <!-- População Mundial -->
+                <div class="card" style="border-top: 8px solid #2563eb;">
+                    <div class="card-icon">🌍</div>
+                    <p style="font-size: 4rem; font-weight: 900; color: #2563eb; text-align: center;">430M</p>
+                    <p style="font-size: 1.125rem; font-weight: 600; color: #1f2937; text-align: center; margin-top: 1rem;">Pessoas com perda auditiva no mundo</p>
+                    <p style="font-size: 0.75rem; color: #6b7280; text-align: center; margin-top: 0.5rem;">Fonte: OMS, 2021</p>
+                </div>
+
+                <!-- População Brasil -->
+                <div class="card" style="border-top: 8px solid #16a34a;">
+                    <div class="card-icon">🇧🇷</div>
+                    <p style="font-size: 4rem; font-weight: 900; color: #16a34a; text-align: center;">2,51M</p>
+                    <p style="font-size: 1.125rem; font-weight: 600; color: #1f2937; text-align: center; margin-top: 1rem;">Pessoas com surdez severa no Brasil</p>
+                    <p style="font-size: 0.75rem; color: #6b7280; text-align: center; margin-top: 0.5rem;">1,2% da população (IBGE, 2022)</p>
+                </div>
+
+                <!-- Atletas -->
+                <div class="card" style="border-top: 8px solid #7c3aed;">
+                    <div class="card-icon">🏃</div>
+                    <p style="font-size: 4rem; font-weight: 900; color: #7c3aed; text-align: center;">~2.500</p>
+                    <p style="font-size: 1.125rem; font-weight: 600; color: #1f2937; text-align: center; margin-top: 1rem;">Surdoatletas nas Deaflympics</p>
+                    <p style="font-size: 0.75rem; color: #6b7280; text-align: center; margin-top: 0.5rem;">Por edição</p>
+                </div>
+            </div>
+
+            <!-- Participação Brasileira -->
+            <div style="background: white; padding: 3rem; border-radius: 1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin: 3rem 0;">
+                <h3 style="font-size: 2.5rem; font-weight: 900; text-align: center; color: #1f2937; margin-bottom: 3rem;">BRASIL NAS SURDOLIMPÍADAS</h3>
+                <div class="cards-grid-4">
+                    <div style="background: #fef3c7; padding: 1.5rem; border-radius: 0.75rem; text-align: center;">
+                        <p style="font-size: 3rem; font-weight: 900; color: #f59e0b;">1993</p>
+                        <p style="font-size: 0.875rem; font-weight: 600; color: #1f2937; margin-top: 0.5rem;">1ª Participação</p>
+                        <p style="font-size: 0.75rem; color: #6b7280;">Sofia, Bulgária</p>
+                    </div>
+                    <div style="background: #fed7aa; padding: 1.5rem; border-radius: 0.75rem; text-align: center;">
+                        <p style="font-size: 3rem; font-weight: 900; color: #ea580c;">2009</p>
+                        <p style="font-size: 0.875rem; font-weight: 600; color: #1f2937; margin-top: 0.5rem;">1ª Medalha 🥉</p>
+                        <p style="font-size: 0.75rem; color: #6b7280;">Alexandre Fernandes</p>
+                    </div>
+                    <div style="background: #fef08a; padding: 1.5rem; border-radius: 0.75rem; text-align: center;">
+                        <p style="font-size: 3rem; font-weight: 900; color: #ca8a04;">2017</p>
+                        <p style="font-size: 0.875rem; font-weight: 600; color: #1f2937; margin-top: 0.5rem;">1ª Medalha 🥇</p>
+                        <p style="font-size: 0.75rem; color: #6b7280;">Guilherme Maia</p>
+                    </div>
+                    <div style="background: #dbeafe; padding: 1.5rem; border-radius: 0.75rem; text-align: center;">
+                        <p style="font-size: 3rem; font-weight: 900; color: #2563eb;">2022</p>
+                        <p style="font-size: 0.875rem; font-weight: 600; color: #1f2937; margin-top: 0.5rem;">Deaflympics Brasil</p>
+                        <p style="font-size: 0.75rem; color: #6b7280;">Caxias do Sul, RS</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Edições Realizadas -->
+            <div class="cards-grid-2">
+                <div class="gradient-card" style="--start: #2563eb; --end: #1e40af;">
+                    <p style="font-size: 5rem; font-weight: 900;">24</p>
+                    <p style="font-size: 2rem; font-weight: 600; margin-top: 1rem;">Edições de Verão</p>
+                    <p style="font-size: 1rem; margin-top: 0.5rem;">Desde 1924</p>
+                </div>
+                <div class="gradient-card" style="--start: #06b6d4; --end: #0891b2;">
+                    <p style="font-size: 5rem; font-weight: 900;">18</p>
+                    <p style="font-size: 2rem; font-weight: 600; margin-top: 1rem;">Edições de Inverno</p>
+                    <p style="font-size: 1rem; margin-top: 0.5rem;">Desde 1949</p>
+                </div>
+            </div>
+            
+            <p class="source-text">
+                <strong>Fontes:</strong> IBGE, 2022; OMS, 2021; SANTANA JR, A. M. et al. <em>Conhecendo o movimento Surdolímpico</em>. Santos: Paradesporto Brasil + Acessível, 2023; https://www.deaflympics.com
+            </p>
+        </div>
+    </section>
+
+    <div class="divider" style="background: linear-gradient(to right, #14b8a6, #10b981, #22c55e);"></div>
+
+    <!-- SEÇÃO 9: ADAPTAÇÕES ESPORTIVAS -->
+    <section class="section" style="background: linear-gradient(to bottom right, #f0fdfa, #ccfbf1);">
+        <div class="container">
+            <h2 class="section-title" style="color: #0d9488;">ADAPTAÇÕES ESPORTIVAS</h2>
+            <p class="section-subtitle">Como os Esportes são Adaptados para Surdoatletas</p>
+            
+            <div class="alert-box" style="background: linear-gradient(to right, #fef3c7, #fde68a);">
+                <p class="alert-text">
+                    ⚠️ <strong>As regras das modalidades NÃO SÃO MODIFICADAS</strong><br>
+                    Apenas adaptações visuais são implementadas para auxiliar os surdoatletas
+                </p>
+            </div>
+
+            <div class="cards-grid-2">
+                <!-- Natação e Atletismo -->
+                <div class="card" style="border-top: 8px solid #0891b2;">
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+                        <div style="font-size: 3rem;">🏊 🏃</div>
+                        <h4 style="font-size: 1.875rem; font-weight: bold; color: #0891b2;">Natação e Atletismo</h4>
+                    </div>
+                    <div style="background: #ccfbf1; padding: 1.5rem; border-radius: 0.75rem; margin-bottom: 1.5rem;">
+                        <p style="font-weight: bold; color: #0891b2; text-align: center; font-size: 1.25rem;">SISTEMA DE LUZES</p>
+                    </div>
+                    <ul class="card-list">
+                        <li><span class="bullet" style="color: #0891b2;">💡</span> Luzes de <strong>três cores</strong> para largada</li>
+                        <li><span class="bullet" style="color: #0891b2;">💡</span> Posicionadas ao lado da <strong>base de saída</strong></li>
+                        <li><span class="bullet" style="color: #0891b2;">💡</span> Substituem os sinais sonoros tradicionais</li>
+                    </ul>
+                </div>
+
+                <!-- Futsal e Futebol -->
+                <div class="card" style="border-top: 8px solid #16a34a;">
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+                        <div style="font-size: 3rem;">⚽</div>
+                        <h4 style="font-size: 1.875rem; font-weight: bold; color: #16a34a;">Futsal e Futebol</h4>
+                    </div>
+                    <div style="background: #d1fae5; padding: 1.5rem; border-radius: 0.75rem; margin-bottom: 1.5rem;">
+                        <p style="font-weight: bold; color: #16a34a; text-align: center; font-size: 1.25rem;">BANDEIRAS</p>
+                    </div>
+                    <ul class="card-list">
+                        <li><span class="bullet" style="color: #16a34a;">🚩</span> <strong>Bandeirinhas</strong> utilizadas por todos os árbitros</li>
+                        <li><span class="bullet" style="color: #16a34a;">🚩</span> Sinalização visual clara para infrações</li>
+                        <li><span class="bullet" style="color: #16a34a;">🚩</span> Facilitam a comunicação arbitragem-atletas</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Demais Modalidades -->
+            <div style="background: white; padding: 3rem; border-radius: 1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <div style="display: inline-block; background: #7c3aed; color: white; padding: 1.5rem; border-radius: 50%; font-size: 3rem; margin-bottom: 1.5rem;">👐</div>
+                    <h3 style="font-size: 2.5rem; font-weight: 900; color: #7c3aed;">DEMAIS MODALIDADES</h3>
+                </div>
+                <div style="background: #f3e8ff; padding: 2rem; border-radius: 0.75rem;">
+                    <p style="font-size: 1.25rem; color: #1f2937; text-align: center;">
+                        A equipe de arbitragem é orientada a fazer <strong>em destaque</strong> todos os movimentos necessários para sinalizar as infrações ou informações
+                    </p>
+                    <p style="font-size: 1rem; color: #6b7280; text-align: center; margin-top: 1.5rem;">
+                        Gestos amplos e claros | Contato visual | Posicionamento estratégico
+                    </p>
+                </div>
+            </div>
+            
+            <p class="source-text">
+                <strong>Fonte:</strong> SANTANA JR, A. M. et al. <em>Conhecendo o movimento Surdolímpico</em>. Santos: Paradesporto Brasil + Acessível, 2023
+            </p>
+        </div>
+    </section>
+
+    <div class="divider" style="background: linear-gradient(to right, #3b82f6, #6366f1, #8b5cf6);"></div>
+
+    <!-- SEÇÃO 10: COMUNICAÇÃO E CULTURA SURDA -->
+    <section class="section" style="background: linear-gradient(to bottom right, #eff6ff, #dbeafe);">
+        <div class="container">
+            <h2 class="section-title" style="color: #2563eb;">COMUNICAÇÃO E CULTURA SURDA</h2>
+            <p class="section-subtitle">A Importância da Língua de Sinais e da Identidade Cultural</p>
+            
+            <div class="cards-grid-2">
+                <!-- LIBRAS -->
+                <div class="card" style="border-top: 8px solid #2563eb;">
+                    <div class="card-icon">🤟</div>
+                    <h4 class="card-title" style="color: #2563eb;">LIBRAS</h4>
+                    <p style="text-align: center; color: #4b5563; margin-bottom: 1.5rem;">
+                        <strong>Língua Brasileira de Sinais</strong> é fundamental para a construção pedagógica do esporte para pessoas surdas
+                    </p>
+                    <div style="background: #dbeafe; padding: 1.5rem; border-radius: 0.75rem;">
+                        <p style="font-weight: 600; color: #1e40af; text-align: center; line-height: 2;">
+                            ✓ Obrigatória em atividades inclusivas<br>
+                            ✓ Comunicação integral<br>
+                            ✓ Interação efetiva
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Diversidade Surda -->
+                <div class="card" style="border-top: 8px solid #7c3aed;">
+                    <div class="card-icon">👥</div>
+                    <h4 class="card-title" style="color: #7c3aed;">DIVERSIDADE SURDA</h4>
+                    <div style="display: flex; flex-direction: column; gap: 0.75rem; font-size: 0.875rem;">
+                        <div style="background: #f3e8ff; padding: 0.75rem; border-radius: 0.5rem;">• Surdos usuários de Libras</div>
+                        <div style="background: #f3e8ff; padding: 0.75rem; border-radius: 0.5rem;">• Surdos oralizados</div>
+                        <div style="background: #f3e8ff; padding: 0.75rem; border-radius: 0.5rem;">• Surdos implantados</div>
+                        <div style="background: #f3e8ff; padding: 0.75rem; border-radius: 0.5rem;">• Surdos sem comunidade</div>
+                        <div style="background: #f3e8ff; padding: 0.75rem; border-radius: 0.5rem;">• Surdos-cegos</div>
+                    </div>
+                    <p style="font-size: 0.875rem; color: #6b7280; margin-top: 1.5rem; text-align: center; font-weight: 600;">
+                        ⚠️ NEM TODO surdo sabe Libras automaticamente
+                    </p>
+                </div>
+            </div>
+
+            <!-- Citações -->
+            <div style="margin-top: 3rem;">
+                <div class="quote-box" style="background: #d1fae5; border-color: #16a34a;">
+                    <p class="quote-text">
+                        "Os surdos estão se reunindo não para se isolar, mas para reunir poder e informações para a vida em uma sociedade onde os sons e a linguagem falada prevalecem."
+                    </p>
+                    <p class="quote-author">— Siv Fosshaug, 2006</p>
+                </div>
+
+                <div class="quote-box" style="background: #fed7aa; border-color: #ea580c;">
+                    <p class="quote-text">
+                        "...nós somos primeiro surdos e depois atletas."
+                    </p>
+                    <p class="quote-author">— David Stewart, 1990</p>
+                </div>
+
+                <div class="quote-box" style="background: #fce7f3; border-color: #ec4899;">
+                    <p class="quote-text">
+                        "Um intérprete de língua de sinais é um pré-requisito na maioria dos esportes, mas um intérprete não pode eliminar todas as barreiras de comunicação."
+                    </p>
+                    <p class="quote-author">— Siv Fosshaug, 2006</p>
+                </div>
+            </div>
+            
+            <p class="source-text">
+                <strong>Fontes:</strong> SANTANA JR, A. M. et al. <em>Conhecendo o movimento Surdolímpico</em>. Santos: Paradesporto Brasil + Acessível, 2023; Fosshaug, 2006; Stewart, 1990
+            </p>
+        </div>
+    </section>
+
+    <div class="divider" style="background: linear-gradient(to right, #f59e0b, #f97316, #dc2626);"></div>
+
+    <!-- SEÇÃO 11: IMPACTO SOCIAL E DESAFIOS -->
+    <section class="section" style="background: linear-gradient(to bottom right, #fffbeb, #fef3c7);">
+        <div class="container">
+            <h2 class="section-title" style="color: #d97706;">IMPACTO SOCIAL E DESAFIOS</h2>
+            <p class="section-subtitle">Conquistas e Obstáculos do Movimento Surdolímpico</p>
+            
+            <div class="cards-grid-2">
+                <!-- Impactos Positivos -->
+                <div class="card" style="border-top: 8px solid #16a34a;">
+                    <h4 style="font-size: 2rem; font-weight: bold; color: #15803d; text-align: center; margin-bottom: 2rem;">
+                        ✨ IMPACTOS POSITIVOS
+                    </h4>
+                    <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                        <div style="display: flex; align-items: start; gap: 1rem;">
+                            <div style="font-size: 2.5rem;">🤝</div>
+                            <div>
+                                <p style="font-weight: bold; color: #1f2937; font-size: 1.125rem;">Inclusão Social</p>
+                                <p style="font-size: 0.875rem; color: #6b7280;">Promoção da igualdade e valorização da diversidade</p>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: start; gap: 1rem;">
+                            <div style="font-size: 2.5rem;">🏅</div>
+                            <div>
+                                <p style="font-weight: bold; color: #1f2937; font-size: 1.125rem;">Empoderamento</p>
+                                <p style="font-size: 0.875rem; color: #6b7280;">Atletas surdos não se sentem deficientes nos esportes</p>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: start; gap: 1rem;">
+                            <div style="font-size: 2.5rem;">🗣️</div>
+                            <div>
+                                <p style="font-weight: bold; color: #1f2937; font-size: 1.125rem;">Identidade Cultural</p>
+                                <p style="font-size: 0.875rem; color: #6b7280;">Fortalecimento da comunidade surda e da Libras</p>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: start; gap: 1rem;">
+                            <div style="font-size: 2.5rem;">💪</div>
+                            <div>
+                                <p style="font-weight: bold; color: #1f2937; font-size: 1.125rem;">Desenvolvimento Físico</p>
+                                <p style="font-size: 0.875rem; color: #6b7280;">Benefícios físicos, sociais e mentais</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Desafios -->
+                <div class="card" style="border-top: 8px solid #dc2626;">
+                    <h4 style="font-size: 2rem; font-weight: bold; color: #b91c1c; text-align: center; margin-bottom: 2rem;">
+                        ⚠️ DESAFIOS
+                    </h4>
+                    <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                        <div style="display: flex; align-items: start; gap: 1rem;">
+                            <div style="font-size: 2.5rem;">📺</div>
+                            <div>
+                                <p style="font-weight: bold; color: #1f2937; font-size: 1.125rem;">Falta de Visibilidade</p>
+                                <p style="font-size: 0.875rem; color: #6b7280;">Mídia quase não divulga as Surdolimpíadas</p>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: start; gap: 1rem;">
+                            <div style="font-size: 2.5rem;">💰</div>
+                            <div>
+                                <p style="font-weight: bold; color: #1f2937; font-size: 1.125rem;">Falta de Recursos</p>
+                                <p style="font-size: 0.875rem; color: #6b7280;">Poucas verbas e patrocínios para atletas</p>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: start; gap: 1rem;">
+                            <div style="font-size: 2.5rem;">🏦</div>
+                            <div>
+                                <p style="font-weight: bold; color: #1f2937; font-size: 1.125rem;">Bolsa Atleta Menor</p>
+                                <p style="font-size: 0.875rem; color: #6b7280;">Valores inferiores aos de atletas olímpicos</p>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: start; gap: 1rem;">
+                            <div style="font-size: 2.5rem;">💼</div>
+                            <div>
+                                <p style="font-weight: bold; color: #1f2937; font-size: 1.125rem;">Profissionalização Difícil</p>
+                                <p style="font-size: 0.875rem; color: #6b7280;">Maioria precisa trabalhar e treinar simultaneamente</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Necessidades -->
+            <div class="gradient-card" style="--start: #2563eb; --end: #7c3aed; margin-top: 3rem;">
+                <h3 style="font-size: 2.5rem; font-weight: 900; margin-bottom: 2rem;">🎯 O QUE É NECESSÁRIO?</h3>
+                <div class="cards-grid-4">
+                    <div style="text-align: center;">
+                        <div style="font-size: 3rem; margin-bottom: 0.75rem;">🏆</div>
+                        <p style="font-weight: bold; font-size: 1.125rem;">RECONHECIMENTO</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 3rem; margin-bottom: 0.75rem;">💎</div>
+                        <p style="font-weight: bold; font-size: 1.125rem;">VALORIZAÇÃO</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 3rem; margin-bottom: 0.75rem;">👁️</div>
+                        <p style="font-weight: bold; font-size: 1.125rem;">VISIBILIDADE</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 3rem; margin-bottom: 0.75rem;">💵</div>
+                        <p style="font-weight: bold; font-size: 1.125rem;">INVESTIMENTOS</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="alert-box" style="margin-top: 3rem;">
+                <p class="alert-text">
+                    💡 "Estar fora da Paralimpíada não prejudica nossa inclusão social, o que prejudica é a falta de divulgação, incentivos financeiros e valorização dos Jogos Surdolímpicos."
+                </p>
+            </div>
+            
+            <p class="source-text">
+                <strong>Fontes:</strong> CBDS, 2024; Agência Brasil, 2016; Fosshaug, 2006
+            </p>
+        </div>
+    </section>
+
+    <div class="divider" style="background: linear-gradient(to right, #ec4899, #f43f5e, #fb7185);"></div>
+
+    <!-- SEÇÃO 12: ENSINO E APRENDIZAGEM -->
+    <section class="section" style="background: linear-gradient(to bottom right, #fdf2f8, #fce7f3);">
+        <div class="container">
+            <h2 class="section-title" style="color: #db2777;">ENSINO E APRENDIZAGEM</h2>
+            <p class="section-subtitle">Estratégias Pedagógicas para Surdoatletas</p>
+            
+            <div style="background: white; padding: 2.5rem; border-radius: 1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 3rem;">
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <div style="display: inline-block; background: #db2777; color: white; padding: 1.5rem; border-radius: 50%; font-size: 3rem;">👁️</div>
+                </div>
+                <p style="font-size: 1.5rem; text-align: center; color: #1f2937; font-weight: 600;">
+                    O processo de instrução do aluno/atleta surdo é baseado nas informações <strong style="color: #db2777;">TÁTEIS</strong> e <strong style="color: #db2777;">VISUAIS</strong>
+                </p>
+            </div>
+
+            <h3 style="font-size: 2rem; font-weight: bold; color: #db2777; text-align: center; margin-bottom: 2rem;">
+                PONTOS DE CONTROLE PARA PROFESSORES/TREINADORES
+            </h3>
+
+            <div class="teaching-grid">
+                <div class="teaching-card">
+                    <div class="teaching-icon">👀</div>
+                    <div class="teaching-content">
+                        <h4>Posicionamento Visual</h4>
+                        <p>Sempre se posicionar de maneira que todos os alunos possam estabelecer contato visual</p>
+                    </div>
+                </div>
+
+                <div class="teaching-card">
+                    <div class="teaching-icon">🤟</div>
+                    <div class="teaching-content">
+                        <h4>Recursos de Comunicação</h4>
+                        <p>Utilizar Libras e implementar outros recursos visuais (exemplos, vídeos, imagens)</p>
+                    </div>
+                </div>
+
+                <div class="teaching-card">
+                    <div class="teaching-icon">🛑</div>
+                    <div class="teaching-content">
+                        <h4>Estratégias de Parada</h4>
+                        <p>Estabelecer estratégias claras para conseguir parar a atividade quando necessário</p>
+                    </div>
+                </div>
+
+                <div class="teaching-card">
+                    <div class="teaching-icon">📈</div>
+                    <div class="teaching-content">
+                        <h4>Progressão Pedagógica</h4>
+                        <p>Estabelecer progressão de regras do jogo e complexidade (estratégias e técnicas)</p>
+                    </div>
+                </div>
+
+                <div class="teaching-card">
+                    <div class="teaching-icon">🎯</div>
+                    <div class="teaching-content">
+                        <h4>Demonstração Visual</h4>
+                        <p>Usar exemplos práticos e demonstrações visuais sempre que possível</p>
+                    </div>
+                </div>
+
+                <div class="teaching-card">
+                    <div class="teaching-icon">❤️</div>
+                    <div class="teaching-content">
+                        <h4>Respeito Cultural</h4>
+                        <p>Cuidado para não desrespeitar a cultura das(os) alunas(os) surdas(os)</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gradient-card" style="--start: #7c3aed; --end: #ec4899; margin-top: 3rem;">
+                <h3 style="font-size: 2rem; font-weight: 900; margin-bottom: 2rem;">RECURSOS DE COMUNICAÇÃO</h3>
+                <div class="cards-grid-4">
+                    <div style="text-align: center;">
+                        <div style="font-size: 2.5rem; margin-bottom: 0.75rem;">🤟</div>
+                        <p style="font-weight: 600;">Libras</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 2.5rem; margin-bottom: 0.75rem;">📝</div>
+                        <p style="font-weight: 600;">Instruções Visuais</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 2.5rem; margin-bottom: 0.75rem;">📱</div>
+                        <p style="font-weight: 600;">Aplicativos</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 2.5rem; margin-bottom: 0.75rem;">👤</div>
+                        <p style="font-weight: 600;">Exemplos Práticos</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="background: #dbeafe; border-left: 8px solid #2563eb; padding: 2rem; border-radius: 0.75rem; margin-top: 3rem;">
+                <p style="font-size: 1rem; font-weight: 600; color: #1f2937; text-align: center;">
+                    ⚠️ <strong>IMPORTANTE:</strong> Compreender a origem da deficiência (congênita ou adquirida), estrutura afetada e nível de perda auditiva impacta no entendimento da funcionalidade e na definição das estratégias pedagógicas
+                </p>
+            </div>
+            
+            <p class="source-text">
+                <strong>Fonte:</strong> SANTANA JR, A. M. et al. <em>Conhecendo o movimento Surdolímpico</em>. Santos: Paradesporto Brasil + Acessível, 2023
+            </p>
+        </div>
+    </section>
+
+    <div class="divider" style="background: linear-gradient(to right, #fbbf24, #f97316, #ef4444);"></div>
+
+    <!-- SEÇÃO 13: MEDALHAS BRASILEIRAS -->
+    <section class="section" style="background: linear-gradient(to bottom right, #f0fdf4, #d1fae5);">
+        <div class="container">
+            <h2 class="section-title" style="color: #15803d;">MEDALHAS BRASILEIRAS</h2>
+            <p class="section-subtitle">Conquistas do Brasil nas Surdolimpíadas</p>
+
+            <div class="cards-grid-4">
+                <div class="gradient-card" style="--start: #fbbf24; --end: #f59e0b;">
+                    <div style="font-size: 4rem;">🥇</div>
+                    <div style="font-size: 3.5rem; font-weight: 900;">1</div>
+                    <div style="font-size: 1.5rem; font-weight: 600;">Ouro</div>
+                </div>
+                <div class="gradient-card" style="--start: #9ca3af; --end: #6b7280;">
+                    <div style="font-size: 4rem;">🥈</div>
+                    <div style="font-size: 3.5rem; font-weight: 900;">3</div>
+                    <div style="font-size: 1.5rem; font-weight: 600;">Prata</div>
+                </div>
+                <div class="gradient-card" style="--start: #fb923c; --end: #ea580c;">
+                    <div style="font-size: 4rem;">🥉</div>
+                    <div style="font-size: 3.5rem; font-weight: 900;">14</div>
+                    <div style="font-size: 1.5rem; font-weight: 600;">Bronze</div>
+                </div>
+                <div class="gradient-card" style="--start: #3b82f6; --end: #1d4ed8;">
+                    <div style="font-size: 4rem;">🏅</div>
+                    <div style="font-size: 3.5rem; font-weight: 900;">16</div>
+                    <div style="font-size: 1.5rem; font-weight: 600;">Total</div>
+                </div>
+            </div>
+
+            <div class="medal-card bronze">
+                <h3 class="medal-header">🇹🇼 2009 - Taipei, Taiwan</h3>
+                <div class="medal-grid">
+                    <div class="medal-item">
+                        <p class="medal-athlete">🥉 Alexandre Fernandes</p>
+                        <p class="medal-sport">Judô (-81kg)</p>
+                        <p class="medal-note">Primeira medalha brasileira!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="medal-card blue">
+                <h3 class="medal-header">🇧🇬 2013 - Sofia, Bulgária</h3>
+                <div class="medal-grid">
+                    <div class="medal-item">
+                        <p class="medal-athlete">🥈 Guilherme Maia</p>
+                        <p class="medal-sport">Natação</p>
+                    </div>
+                    <div class="medal-item">
+                        <p class="medal-athlete">🥉 Guilherme Maia</p>
+                        <p class="medal-sport">Natação (2 medalhas)</p>
+                    </div>
+                    <div class="medal-item">
+                        <p class="medal-athlete">🥉 Heron Rodrigues</p>
+                        <p class="medal-sport">Karatê</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="medal-card gold">
+                <h3 class="medal-header">🇹🇷 2017 - Samsun, Turquia</h3>
+                <div class="medal-grid">
+                    <div class="medal-item" style="background: #fef3c7; border: 2px solid #fbbf24;">
+                        <p class="medal-athlete">🥇 Guilherme Maia</p>
+                        <p class="medal-sport">Natação (200m livres)</p>
+                        <p class="medal-note">Primeira medalha de ouro!</p>
+                    </div>
+                    <div class="medal-item">
+                        <p class="medal-athlete">🥉 Guilherme Maia</p>
+                        <p class="medal-sport">Natação (100m livres)</p>
+                    </div>
+                    <div class="medal-item">
+                        <p class="medal-athlete">🥉 Alexandre Fernandes</p>
+                        <p class="medal-sport">Judô</p>
+                    </div>
+                    <div class="medal-item">
+                        <p class="medal-athlete">🥉 Heron Rodrigues</p>
+                        <p class="medal-sport">Karatê</p>
+                    </div>
+                    <div class="medal-item">
+                        <p class="medal-athlete">🥉 Seleção Feminina</p>
+                        <p class="medal-sport">Futebol</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="medal-card green">
+                <h3 class="medal-header">🇧🇷 2022 - Caxias do Sul, Brasil</h3>
+                <p style="font-size: 1.125rem; font-weight: 600; color: #15803d; margin-bottom: 1rem;">Maior número de medalhas da história!</p>
+                <div class="medal-grid">
+                    <div class="medal-item">
+                        <p class="medal-athlete">🥉 Rômulo Crispim</p>
+                        <p class="medal-sport">Judô (-66kg)</p>
+                    </div>
+                    <div class="medal-item">
+                        <p class="medal-athlete">🥉 Alexandre Fernandes</p>
+                        <p class="medal-sport">Judô (-90kg)</p>
+                    </div>
+                    <div class="medal-item">
+                        <p class="medal-athlete">🥉 Guilherme Maia</p>
+                        <p class="medal-sport">Natação (2 medalhas)</p>
+                    </div>
+                    <div class="medal-item">
+                        <p class="medal-athlete">🥉 Seleção Feminina</p>
+                        <p class="medal-sport">Handebol</p>
+                    </div>
+                    <div class="medal-item">
+                        <p class="medal-athlete">🥉 Seleção Feminina</p>
+                        <p class="medal-sport">Futebol</p>
+                    </div>
+                </div>
+            </div>
+
+            <p class="source-text">
+                <strong>Fontes:</strong> Brasil. Ministério do Esporte, 2022. | CBDS, 2024. | Agência Brasil, 2017.
+            </p>
+        </div>
+    </section>
+
+    <div class="divider" style="background: linear-gradient(to right, #fbbf24, #f97316, #ef4444);"></div>
+
+    <!-- SEÇÃO 14: REFERÊNCIAS -->
+    <section class="references">
+        <div class="container">
+            <h2 style="font-size: 3rem; font-weight: 900; text-align: center; margin-bottom: 3rem;">REFERÊNCIAS BIBLIOGRÁFICAS</h2>
+            
+
+            <div class="reference-item">AGÊNCIA BRASIL. <strong>Atletas surdos não participam de Paralimpíada</strong>. Agência Brasil, 6 set. 2016. Disponível em: https://agenciabrasil.ebc.com.br/rio-2016/noticia/2016-09/atletas-surdos-nao-participam-de-paralimpiada. Acesso em: 1 out. 2025.</div>
+
+            <div class="reference-item">BRASIL. Decreto nº 3.298, de 20 de dezembro de 1999. Regulamenta a Lei nº 7.853, de 24 de outubro de 1989, dispõe sobre a Política Nacional para a Integração da Pessoa Portadora de Deficiência. <strong>Diário Oficial da União</strong>, Brasília, DF, 21 dez. 1999.</div>
+
+            <div class="reference-item">BRASIL. Ministério dos Direitos Humanos e da Cidadania. <strong>IBGE divulga dados sobre pessoas com deficiência no Brasil</strong>. Brasília, 23 maio 2025. Disponível em: https://www.gov.br/mdh/pt-br/assuntos/noticias/2025/maio/pela-primeira-vez-ibge-divulga-dados-sobre-pessoas-com-deficiencia-no-brasil. Acesso em: 1 out. 2025.</div>
+
+            <div class="reference-item">CBDS - Confederação Brasileira de Desportos de Surdos. <strong>Sobre a CBDS</strong>. 2025. Disponível em: https://www.cbds.org.br/cbds/. Acesso em: 1 out. 2025.</div>
+
+            <div class="reference-item">DI FRANCO, M. A. R. <strong>Surdolimpíadas: histórias e memórias dos esportes surdos no Brasil (1993-2017)</strong>. 2019. Dissertação (Mestrado em Ciências do Movimento Humano) - Escola de Educação Física, Fisioterapia e Dança, Universidade Federal do Rio Grande do Sul, Porto Alegre, 2019.</div>
+
+            <div class="reference-item">FOSSHAUG, S. Deaf Sports: An Empowerment Perspective. <strong>WFD News</strong>, World Federation of the Deaf, v. 1, p. 10-13, 2006.</div>
+
+            <div class="reference-item">IBGE - Instituto Brasileiro de Geografia e Estatística. <strong>Censo Demográfico 2022</strong>. Rio de Janeiro: IBGE, 2023. Disponível em: https://www.ibge.gov.br/. Acesso em: 1 out. 2025.</div>
+
+            <div class="reference-item">ICSD - International Committee of Sports for the Deaf. <strong>Deaflympics Official Website</strong>. 2025. Disponível em: https://deaflympics.com/. Acesso em: 1 out. 2025.</div>
+
+            <div class="reference-item">OMS - Organização Mundial da Saúde. <strong>World Report on Hearing</strong>. Genebra: WHO, 2021. Disponível em: https://www.who.int/publications/i/item/9789240020481. Acesso em: 1 out. 2025.</div>
+
+            <div class="reference-item">PANAMDES - Pan American Deaf Sports Organization. <strong>About PANAMDES</strong>. 2025. Disponível em: https://panamdes.com/. Acesso em: 1 out. 2025.</div>
+
+            <div class="reference-item">SANTANA JR, A. M. et al. <strong>Conhecendo o movimento Surdolímpico</strong>. In: Paradesporto Brasil + Acessível. Santos: Universidade Federal de São Paulo, 2023. Disponível em: https://paradesporto.unifesp.br/. Acesso em: 1 out. 2025.</div>
+
+            <div class="reference-item">STEWART, D. Deaf Sport: The Impact of Sports within the Deaf Community. In: STEWART, D. (Ed.). <strong>Deaf Sport: The Impact of Sports within the Deaf Community</strong>. Washington, DC: Gallaudet University Press, 1990. p. 1-16.</div>
+
+            <div class="reference-item">WIKIPEDIA. <strong>Deaflympics</strong>. 23 ago. 2025. Disponível em: https://en.wikipedia.org/wiki/Deaflympics. Acesso em: 1 out. 2025.</div>
+
+            <div style="text-align: center; margin-top: 4rem;">
+                <div class="footer-cta">
+                    <h3 class="footer-title">🏆 VALORIZE AS SURDOLIMPÍADAS!</h3>
+                    <p style="font-size: 1.5rem; margin-bottom: 1rem;">Divulgue, apoie e reconheça o esporte surdo</p>
+                    <p style="font-size: 1.25rem;">Juntos por mais visibilidade, respeito e inclusão! 🤟</p>
+                </div>
+            </div>
+
+            <p style="text-align: center; color: #9ca3af; margin-top: 3rem;">
+                Material elaborado com base nas fontes fornecidas | Outubro 2025
+            </p>
+        </div>
+    </section>
+
+</body>
+</html>
