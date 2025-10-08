@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Educação Física - Menu Principal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 600px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .menu-grid {
+            display: grid;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .menu-item {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px 20px;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+            display: block;
+        }
+
+        .menu-item:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .menu-item h2 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .menu-item p {
+            opacity: 0.9;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 20px;
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .menu-item {
+                padding: 20px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Educação Física</h1>
+        <p class="subtitle">Selecione um projeto para explorar</p>
+        
+        <div class="menu-grid">
+            <a href="infografico-surdolimpiadas/index.html" class="menu-item">
+                <h2>📊 Infográfico Surdolimpíadas</h2>
+                <p>Explore dados e informações sobre as Surdolimpíadas através de visualizações interativas</p>
+            </a>
+            
+            <a href="mapa-metabolico-mental/mapa-metabolico-mental.html" class="menu-item">
+                <h2>🧠 Mapa Metabólico Mental</h2>
+                <p>Visualize o mapa mental do metabolismo e suas conexões</p>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
